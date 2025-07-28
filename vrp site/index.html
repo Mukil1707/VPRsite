@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VPR Real Estate & Construction</title>
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #003366;
+      --accent: #f39c12;
+      --light: #f9f9f9;
+      --dark: #222;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Responsive container and sections */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cards, .gallery, #stats .container > div {
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cards, .gallery {
+  display: flex;
+  justify-content: center;
+}
+
+.card, .gallery > div {
+  flex: 1 1 300px;
+  min-width: 260px;
+  max-width: 350px;
+  margin-bottom: 20px;
+}
+
+/* Responsive images */
+.gallery img, .about img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Responsive form */
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Responsive stats */
+#stats > div {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+#stats > div > div {
+  min-width: 120px;
+  margin-bottom: 20px;
+}
+
+/* Responsive testimonials */
+#testimonials > div {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+#testimonials > div > div {
+  min-width: 220px;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+/* Global styles */
+.container {
+      width: 90%; max-width: 1200px; margin: auto;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 35px 0;
+    }
+
+    header h1 {
+      display: inline-block;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      position: relative;
+      background: url('https://via.placeholder.com/1200x600?text=Hero+Background') center/cover fixed;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1s ease-in-out;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: var(--white);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .services, .about, .contact, .projects {
+      padding: 60px 0;
+      background: var(--white);
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      padding: 20px;
+      background: var(--light);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px; height: 3px;
+      background: var(--white); transition: 0.3s;
+    }
+
+    @media (max-width: 900px) {
+  .cards, .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    background: var(--primary);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    left: 0;
+    z-index: 100;
+    padding: 20px 0;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero {
+    padding: 40px 0;
+  }
+  .about img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  .card, .gallery > div {
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+  .gallery img {
+    max-width: 98vw;
+  }
+  .about img {
+    max-width: 98vw;
+  }
+}
+
+/* ...existing code... */
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>VPR Real Estate & Construction</h1>
+      <nav>
+        <div class="hamburger" id="hamburger">
+          <div></div><div></div><div></div>
+        </div>
+        <ul id="navMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container" data-aos="fade-up">
+      <h2>Building Dreams. Investing Smart.</h2>
+      <p>Your trusted partner in real estate and construction</p><br>
+      <a href="#services" class="btn">Our Services</a>
+    </div>
+  </section>
+
+  <section id="services" class="services container" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card" data-aos="fade-right">
+        <h3>Real Estate</h3>
+        <p>Residential & commercial property buying, selling, leasing, and investment consulting.</p>
+      </div>
+      <div class="card" data-aos="fade-left">
+        <h3>Construction</h3>
+        <p>End‑to‑end building services including planning, execution, and finishing to high standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects container">
+    <h2 data-aos="fade-up">Featured Projects</h2>
+    <div class="gallery"><br>
+      <div>
+        <img src="https://www.jrdrealtorss.com/images/img1.JPG"
+             alt="Modern Residential Communities designed for comfort and luxury."
+             data-aos="zoom-in-up" />
+             <center>
+        <p>Modern Residential Communities</p>
+        </center>
+      </div>
+      <div>
+        <img src="https://www.propleaf.com/images/blogs/icons/059995099.jpg"
+             alt="Luxury residential interior"
+             data-aos="zoom-in-up" />
+             <center>
+        <p>Luxury Residential Interior</p>
+        </center>
+      </div>
+      <div>
+        <img src="https://mpcproperties.rs/wp-content/uploads/2019/10/substainable.jpg"
+             alt="Eco‑friendly villa project"
+             data-aos="zoom-in-up" />
+             <center>
+        <p>Eco‑friendly Villa Project</p>
+        </center>
+      </div>
+    </div>
+  </section>
+  <hr><hr>
+<center>
+  <section id="about" class="about container" data-aos="fade-up">
+    <h2>About VPR</h2>
+    <img src="img/img1.png"width=450px height="300" alt="About VPR" />
+    <p>We are a real estate and construction firm committed to delivering excellence in every brick we lay and every deal we close. With decades of experience and client trust, VPR continues to shape skylines and transform lifestyles.</p>
+  </section>
+</center>
+
+<!-- Add before testimonials -->
+<section id="stats" class="container" data-aos="fade-up" style="text-align:center; padding:40px 0;">
+  <h2>Our Achievements</h2>
+  <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px;">
+    <div>
+      <h3 style="font-size:2.5rem;color:#f39c12;" id="projectsCount">0</h3>
+      <p>Projects Completed</p>
+    </div>
+    <div>
+      <h3 style="font-size:2.5rem;color:#f39c12;" id="clientsCount">0</h3>
+      <p>Satisfied Clients</p>
+    </div>
+    <div>
+      <h3 style="font-size:2.5rem;color:#f39c12;" id="yearsCount">0</h3>
+      <p>Years Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- Add before contact section -->
+<section id="testimonials" class="container" data-aos="fade-up">
+  <h2>What Our Clients Say</h2>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
+    <div style="background:#f9f9f9;padding:20px;border-radius:8px;max-width:320px;">
+      <p>"VPR made our dream home a reality! Professional and transparent."</p>
+      <strong>- Priya S.</strong>
+    </div>
+    <div style="background:#f9f9f9;padding:20px;border-radius:8px;max-width:320px;">
+      <p>"Excellent service and timely delivery. Highly recommended."</p>
+      <strong>- Rajesh K.</strong>
+    </div>
+  </div>
+</section>
+
+  <section id="contact" class="contact container" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formspree.io/f/1r8rjfe6j7" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="formMsg"></p>
+    </form>
+    <div style="margin-top:30px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.123456789!2d78.123456789!3d12.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjAiTiA3OMKwMDcnMjQuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+        width="100%" height="250" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 VPR Real Estate & Construction. All rights reserved.</p>
+      <div style="margin-top:10px;">
+        <a href="https://facebook.com/" target="_blank" style="margin:0 8px;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg" alt="Facebook" width="24" style="vertical-align:middle;filter:invert(1);" />
+        </a>
+        <a href="https://instagram.com/" target="_blank" style="margin:0 8px;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" width="24" style="vertical-align:middle;filter:invert(1);" />
+        </a>
+        <a href="https://linkedin.com/" target="_blank" style="margin:0 8px;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" width="24" style="vertical-align:middle;filter:invert(1);" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919514546736" target="_blank" style="
+    position:fixed;bottom:25px;right:25px;z-index:999;
+    background:#25d366;padding:12px 15px;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" width="32" style="filter:invert(1);" />
+  </a>
+  <a href="tel:+91-9841603922" style="
+    position:fixed;bottom:80px;right:25px;z-index:999;
+    background:#007bff;padding:12px 15px;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/phone.svg" alt="Call" width="28" style="filter:invert(1);" />
+  </a>
+  <button id="scrollTopBtn" style="
+    display:none;position:fixed;bottom:140px;right:25px;z-index:999;
+    background:#f39c12;color:#fff;border:none;padding:12px 16px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+    ↑
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const hamb = document.getElementById('hamburger'),
+          menu = document.getElementById('navMenu'),
+          form = document.getElementById('contactForm'),
+          msg = document.getElementById('formMsg'),
+          scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    hamb.addEventListener('click', () => menu.classList.toggle('open'));
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = form.querySelector('input[type="text"]').value.trim(),
+            email = form.querySelector('input[type="email"]').value.trim(),
+            message = form.querySelector('textarea').value.trim();
+
+      if (!name || !email || !message) {
+        msg.textContent = "❗Please fill out all fields.";
+        msg.style.color = "red";
+        return;
+      }
+
+      msg.textContent = "✅ Thank you! We'll be in touch soon.";
+      msg.style.color = "green";
+      setTimeout(() => {
+        form.reset();
+        msg.textContent = "";
+      }, 3000);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Animated stats
+function animateValue(id, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  const obj = document.getElementById(id);
+  let timer = setInterval(function() {
+    current += increment;
+    obj.textContent = current;
+    if (current == end) clearInterval(timer);
+  }, stepTime);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  animateValue("projectsCount", 0, 120, 1200);
+  animateValue("clientsCount", 0, 300, 1200);
+  animateValue("yearsCount", 0, 15, 1200);
+});
+
+// Scroll-to-top button
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => {
+  scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+  </script>
+</body>
+</html>
